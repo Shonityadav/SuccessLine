@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from '../components/Layout';
 import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { CreateTestModal } from '../components/CreateTestModal';
 import { Users, UsersThree, Exam, Plus, CheckCircle, Clock, ChartBar } from '@phosphor-icons/react';
 import { mockTests, mockClasses } from '../mockData';
 
 export const TeacherTests = () => {
   const teacherClasses = mockClasses.filter(c => c.teacherId === 't1');
   const classIds = teacherClasses.map(c => c.id);
-  const teacherTests = mockTests.filter(t => classIds.includes(t.classId));
 
+  const [allTests, setAllTests] = useState(mockTests.filter(t => classIds.includes(t.classId)));
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const teacherTests = allTests;
   const activeTests = teacherTests.filter(t => t.status === 'active');
   const upcomingTests = teacherTests.filter(t => t.status === 'upcoming');
+
+  const handlePublish = (newTest) => {
+    setAllTests(prev => [newTest, ...prev]);
+  };
 
   const sidebarLinks = [
     { label: 'Dashboard', path: '/teacher', icon: <Users size={20} /> },
@@ -25,6 +32,7 @@ export const TeacherTests = () => {
 
     return (
       <div style={{
+
         background: 'rgba(255,255,255,0.9)',
         borderRadius: '16px',
         border: `1.5px solid ${isActive ? 'rgba(99,102,241,0.2)' : 'var(--color-border)'}`,
@@ -129,7 +137,14 @@ export const TeacherTests = () => {
   };
 
   return (
-    <Layout sidebarLinks={sidebarLinks} role="teacher">
+    <>
+      {showCreateModal && (
+        <CreateTestModal
+          onClose={() => setShowCreateModal(false)}
+          onPublish={handlePublish}
+        />
+      )}
+      <Layout sidebarLinks={sidebarLinks} role="teacher">
       {/* Header */}
       <div className="page-header mb-8 bg-surface rounded-xl shadow-sm glass" style={{ padding: 'var(--space-6)' }}>
         <div>
@@ -138,6 +153,7 @@ export const TeacherTests = () => {
         </div>
         <div className="header-actions">
           <button
+            onClick={() => setShowCreateModal(true)}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -208,5 +224,6 @@ export const TeacherTests = () => {
         </Card>
       )}
     </Layout>
+    </>
   );
 };
