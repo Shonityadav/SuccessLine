@@ -5,6 +5,7 @@ import { StudentDashboard } from './pages/StudentDashboard';
 import { StudentAttendance } from './pages/StudentAttendance';
 import { StudentChat } from './pages/StudentChat';
 import { StudentTests } from './pages/StudentTests';
+import { AIChatbot } from './pages/AIChatbot';
 import { TeacherDashboard } from './pages/TeacherDashboard';
 import { TeacherClasses } from './pages/TeacherClasses';
 import { TeacherTests } from './pages/TeacherTests';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/student/attendance" element={<StudentAttendance />} />
         <Route path="/student/chat" element={<StudentChat />} />
         <Route path="/student/tests" element={<StudentTests />} />
+        <Route path="/student/ai-tutor" element={<AIChatbot />} />
         
         {/* Teacher Routes */}
         <Route path="/teacher" element={<TeacherDashboard />} />

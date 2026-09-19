@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from '../components/Layout';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
-import { Books, Chat, CalendarCheck, Bell, Exam, Info, Warning } from '@phosphor-icons/react';
+import { Books, Chat, CalendarCheck, Bell, Exam, Info, Warning, Robot } from '@phosphor-icons/react';
 import { mockNotifications, mockTests, mockUsers } from '../mockData';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,8 @@ export const StudentDashboard = () => {
     { label: 'Dashboard', path: '/student', icon: <Books size={20} /> },
     { label: 'Attendance', path: '/student/attendance', icon: <CalendarCheck size={20} /> },
     { label: 'Class Chat', path: '/student/chat', icon: <Chat size={20} /> },
-    { label: 'Tests', path: '/student/tests', icon: <Exam size={20} /> }
+    { label: 'Tests', path: '/student/tests', icon: <Exam size={20} /> },
+    { label: 'AI Tutor', path: '/student/ai-tutor', icon: <Robot size={20} /> }
   ];
 
   const getNotificationIcon = (type) => {

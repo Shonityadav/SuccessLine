@@ -1,14 +1,15 @@
 import React from 'react';
 import { Layout } from '../components/Layout';
 import { Card } from '../components/Card';
-import { Books, Chat, CalendarCheck, Exam } from '@phosphor-icons/react';
+import { Books, Chat, CalendarCheck, Exam, Robot } from '@phosphor-icons/react';
 
 export const StudentAttendance = () => {
   const sidebarLinks = [
     { label: 'Dashboard', path: '/student', icon: <Books size={20} /> },
     { label: 'Attendance', path: '/student/attendance', icon: <CalendarCheck size={20} /> },
     { label: 'Class Chat', path: '/student/chat', icon: <Chat size={20} /> },
-    { label: 'Tests', path: '/student/tests', icon: <Exam size={20} /> }
+    { label: 'Tests', path: '/student/tests', icon: <Exam size={20} /> },
+    { label: 'AI Tutor', path: '/student/ai-tutor', icon: <Robot size={20} /> }
   ];
 
   const daysInMonth = Array.from({ length: 30 }, (_, i) => i + 1);
